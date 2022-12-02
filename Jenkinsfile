@@ -1,9 +1,9 @@
 pipeline {
-    agent {
-        kubernetes {
-            yamlFile 'train-schedule-kube.yml'
-        }
-    }
+    agent all
+//        kubernetes {
+//            yamlFile 'train-schedule-kube.yml'
+//        }
+//    }
     environment {
         //be sure to replace "willbla" with your own Docker Hub username
         DOCKER_IMAGE_NAME = "michelangelodorado/train-schedule"
@@ -50,11 +50,11 @@ pipeline {
                 input 'Deploy to Production?'
                 milestone(1)
                 //implement Kubernetes deployment here
-                //kubernetesDeploy(
-                //    kubeconfigId: 'kubeconfig',
-                //    configs: 'train-schedule-kube.yml',
-                //    enableConfigSubstitution: true
-                //)
+                kubernetesDeploy(
+                    kubeconfigId: 'kubeconfig',
+                    configs: 'train-schedule-kube.yml',
+                    enableConfigSubstitution: true
+                )
             }
         }
     }
