@@ -1,5 +1,5 @@
 pipeline {
-    agent all
+    agent any
 //        kubernetes {
 //            yamlFile 'train-schedule-kube.yml'
 //        }
