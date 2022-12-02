@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        kubernetes {
-            yamlFile 'train-schedule-kube.yml'
-        }
-    }
+    agent any
     environment {
         //be sure to replace "willbla" with your own Docker Hub username
         DOCKER_IMAGE_NAME = "michelangelodorado/train-schedule"
