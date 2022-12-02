@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        kubernetes {
+            yamlFile 'KubernetesPod.yaml'
+    }
+  }
     environment {
         //be sure to replace "willbla" with your own Docker Hub username
         DOCKER_IMAGE_NAME = "michelangelodorado/train-schedule"
@@ -50,10 +54,7 @@ pipeline {
                 //    kubeconfigId: 'kubeconfig',
                 //    configs: 'train-schedule-kube.yml',
                 //    enableConfigSubstitution: true
-                
-                
-                
-                )
+                //)
             }
         }
     }
