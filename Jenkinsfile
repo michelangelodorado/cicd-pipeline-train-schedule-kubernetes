@@ -42,12 +42,12 @@ pipeline {
                 }
             }
         }
-        stage('DeployToProduction') {
+        stage('Deploy to Kubernetes Cluster') {
             when {
                 branch 'master'
             }
             steps {
-                input 'Deploy to Production?'
+                input 'Deploy?'
                 milestone(1)
                 //implement Kubernetes deployment here
                 kubernetesDeploy(
